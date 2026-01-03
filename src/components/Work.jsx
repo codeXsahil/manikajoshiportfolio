@@ -21,8 +21,6 @@ const projects = [
     {
         title: "Secret Temptation",
         category: "Influencer Campaign",
-        title: "Secret Temptation",
-        category: "Influencer Campaign",
         year: "2024",
         image: imgSecret,
         description: "Executed influencer-led campaigns with top creators to strengthen brand recall in the beauty segment.",
@@ -44,8 +42,6 @@ const projects = [
         }
     },
     {
-        title: "Pearson India",
-        category: "PR & Influencer",
         title: "Pearson India",
         category: "PR & Influencer",
         year: "2022",
