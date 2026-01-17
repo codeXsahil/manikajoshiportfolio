@@ -15,7 +15,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex flex-col gap-4 text-right">
-                        <a href="mailto:hello@manikajoshi.com" className="text-xl md:text-2xl font-serif hover:text-gold transition-colors">hello@manikajoshi.com</a>
+                        <a href="mailto:hello@manikajoshi.in" className="text-xl md:text-2xl font-serif hover:text-gold transition-colors">hello@manikajoshi.in</a>
                         <p className="text-dim text-sm">New Delhi, India</p>
                     </div>
                 </div>
