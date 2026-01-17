@@ -18,7 +18,7 @@ const DigitalPerformance = () => {
     ];
 
     return (
-        <section className="bg-[#050505] relative py-16 md:py-24 border-t border-white/5">
+        <section className="bg-[#050505] relative py-20 border-t border-white/5">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row gap-12 md:gap-20">
 
