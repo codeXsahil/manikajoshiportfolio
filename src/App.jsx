@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HelmetProvider } from 'react-helmet-async';
 import './index.css';
-import SEO from './components/SEO';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
