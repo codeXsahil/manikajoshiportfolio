@@ -52,7 +52,7 @@ const Navigation = () => {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl"
+                className="fixed top-6 left-0 right-0 mx-auto z-50 w-[90%] max-w-2xl"
             >
                 <div className="glass-panel rounded-full px-6 py-3 flex items-center justify-between relative z-50">
                     <a href="#" className="font-serif text-xl tracking-tight font-medium hover:text-gold transition-colors">MJ.</a>

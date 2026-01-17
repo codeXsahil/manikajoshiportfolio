@@ -53,7 +53,7 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden section-padding perspective-1000"
+            className="min-h-dvh flex flex-col justify-center items-center relative overflow-hidden section-padding perspective-1000"
             onMouseMove={handleMouseMove}
         >
             <HeroBackground />
@@ -119,7 +119,7 @@ const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-dim"
+                className="absolute bottom-10 left-0 right-0 mx-auto w-fit flex flex-col items-center gap-2 text-dim"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, y: [0, 10, 0] }}
                 transition={{
