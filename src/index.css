@@ -7,6 +7,10 @@
     @apply bg-black text-[#f0f0f0] font-sans antialiased overflow-x-hidden;
   }
 
+  html {
+    @apply overflow-x-hidden;
+  }
+
   h1,
   h2,
   h3,
@@ -23,7 +27,7 @@
   }
 
   .section-padding {
-    @apply py-32;
+    @apply py-16 md:py-32;
   }
 
   .container {
