@@ -37,7 +37,7 @@ const HeroBackground = () => {
             {/* Layer 1: DEEP BACKGROUND (Giant Outlined Text) */}
             <motion.div
                 style={{ y: yDeep, x: useTransform(smoothX, [-0.5, 0.5], [15, -15]), rotateZ: -5 }}
-                className="absolute inset-0 z-0 flex flex-col justify-center items-center opacity-[0.15]"
+                className="hidden lg:flex absolute inset-0 z-0 flex-col justify-center items-center opacity-[0.15]"
             >
                 <h1 className="text-[15vw] font-black leading-none text-transparent stroke-text whitespace-nowrap">
                     DIGITAL
@@ -51,7 +51,7 @@ const HeroBackground = () => {
             </motion.div>
 
             {/* Layer 2: MIDGROUND (Functional Keywords) */}
-            <motion.div style={{ y: yMid, x: useTransform(smoothX, [-0.5, 0.5], [30, -30]) }} className="absolute inset-0 z-10">
+            <motion.div style={{ y: yMid, x: useTransform(smoothX, [-0.5, 0.5], [30, -30]) }} className="hidden lg:block absolute inset-0 z-10">
                 {/* Randomly scattered marketing terms */}
                 <FloatingWord top="15%" left="10%" text="SEO" delay={0} />
                 <FloatingWord top="25%" right="15%" text="ANALYTICS" delay={0.2} />
@@ -62,7 +62,7 @@ const HeroBackground = () => {
             </motion.div>
 
             {/* Layer 3: FOREGROUND (Tech Accents) */}
-            <motion.div style={{ y: yFront, x: useTransform(smoothX, [-0.5, 0.5], [50, -50]) }} className="absolute inset-0 z-10">
+            <motion.div style={{ y: yFront, x: useTransform(smoothX, [-0.5, 0.5], [50, -50]) }} className="hidden lg:block absolute inset-0 z-10">
                 <div className="absolute top-[20%] left-[20%] text-gold/20 text-4xl font-mono">+</div>
                 <div className="absolute bottom-[30%] right-[20%] text-white/10 text-4xl font-mono">//</div>
                 <div className="absolute top-[40%] right-[30%] w-20 h-[1px] bg-gold/20" />
