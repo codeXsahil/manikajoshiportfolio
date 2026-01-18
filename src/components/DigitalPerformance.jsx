@@ -6,6 +6,53 @@ import { TrendingUp, Users, Target, BarChart3, ArrowUpRight, X, ChevronDown, Che
 const adsAssets = import.meta.glob('../assets/images/performance/*.{png,jpg,jpeg,webp}', { eager: true, as: 'url' });
 const screenshots = Object.values(adsAssets);
 
+// Mobile Slideshow Component
+const MobileSlideshow = ({ images, onImageClick }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    React.useEffect(() => {
+        if (images.length <= 1) return;
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [images.length]);
+
+    return (
+        <div
+            className="w-full aspect-video rounded-xl overflow-hidden relative mb-8 border border-white/10"
+            onClick={() => onImageClick(images[currentIndex])}
+        >
+            <AnimatePresence mode="wait">
+                <motion.img
+                    key={currentIndex}
+                    src={images[currentIndex]}
+                    alt="Performance Result"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+            </AnimatePresence>
+
+            {/* Overlay and Indicator */}
+            <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
+
+
+                <div className="flex gap-1">
+                    {images.map((_, idx) => (
+                        <div
+                            key={idx}
+                            className={`h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-4 bg-gold' : 'w-1 bg-white/30'}`}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const DigitalPerformance = () => {
     const [showGallery, setShowGallery] = useState(false);
     const [lightboxSrc, setLightboxSrc] = useState(null);
@@ -18,9 +65,9 @@ const DigitalPerformance = () => {
     ];
 
     return (
-        <section className="bg-[#050505] relative py-20 border-t border-white/5">
+        <section className="bg-[#050505] relative py-10 md:py-20 border-t border-white/5">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row gap-12 md:gap-20">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-20">
 
                     {/* Left Column: Context & Metrics */}
                     <div className="md:w-1/3 space-y-12">
@@ -75,7 +122,18 @@ const DigitalPerformance = () => {
 
                     {/* Right Column: Screenshot Gallery Preview */}
                     <div className="md:w-2/3">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        {/* Mobile Slideshow View (Visible only on mobile) */}
+                        <div className="block md:hidden">
+                            {screenshots.length > 0 && (
+                                <MobileSlideshow
+                                    images={screenshots.slice(0, 4)}
+                                    onImageClick={(src) => setLightboxSrc(src)}
+                                />
+                            )}
+                        </div>
+
+                        {/* Desktop Grid View (Hidden on mobile) */}
+                        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             {screenshots.length > 0 ? (
                                 screenshots.slice(0, 4).map((src, idx) => (
                                     <motion.div
