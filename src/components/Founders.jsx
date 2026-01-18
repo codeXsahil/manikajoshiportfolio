@@ -10,13 +10,15 @@ const founders = [
         name: "Ankush Vengurlekar",
         role: "Tech Leader & Growth Expert",
         image: imgAnkush,
-        description: "Personal branding focused on growth, leadership & execution. Built consistent thought-leadership framework."
+        description: "Personal branding focused on growth, leadership & execution. Built consistent thought-leadership framework.",
+        linkedin: "https://www.linkedin.com/in/ankush-vengurlekar-growth/"
     },
     {
         name: "Gurpreet Singh Jodhka",
         role: "Founder & Entrepreneur",
         image: imgGurpreet,
-        description: "Professional positioning aligned with business credibility. Established a clear brand voice."
+        description: "Professional positioning aligned with business credibility. Established a clear brand voice.",
+        linkedin: "https://www.linkedin.com/in/gurpreetjodhka/"
     }
 ];
 
@@ -51,7 +53,7 @@ const Founders = () => {
                             <p className="text-dim text-sm leading-relaxed mb-6">
                                 {founder.description}
                             </p>
-                            <a href="#" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest hover:text-gold transition-colors">
+                            <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest hover:text-gold transition-colors">
                                 <Linkedin size={16} /> View Profile
                             </a>
                         </motion.div>

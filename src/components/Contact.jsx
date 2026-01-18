@@ -58,7 +58,7 @@ const Contact = () => {
                         </motion.h2>
 
                         <p className="text-dim text-lg mb-12 leading-relaxed">
-                            Ready to scale your authority and impact? I'm currently accepting select projects for Q3 2024. Reach out to discuss your vision.
+                            Ready to scale your authority and impact? I'm currently accepting select projects for 2026. Reach out to discuss your vision.
                         </p>
 
                         <div className="space-y-8">
@@ -83,11 +83,8 @@ const Contact = () => {
                             </div>
 
                             <div className="pt-8 border-t border-white/5 flex gap-4">
-                                <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-black hover:border-gold transition-all duration-300">
+                                <a href="https://www.linkedin.com/in/manikajoshi27/" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-black hover:border-gold transition-all duration-300">
                                     <Linkedin size={20} />
-                                </a>
-                                <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-black hover:border-gold transition-all duration-300">
-                                    <Instagram size={20} />
                                 </a>
                             </div>
                         </div>

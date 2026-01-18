@@ -15,25 +15,37 @@ const Navigation = () => {
     const [activeSection, setActiveSection] = useState('home');
 
     // Scroll Spy Logic
+    // Scroll Spy Logic
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = navLinks.map(link => link.href.substring(1));
+        let uniqueSections = navLinks.map(link => link.href.substring(1));
+        let ticking = false;
 
-            // Find the current section
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    // If the top of the section is within the viewport (with some offset)
-                    if (rect.top <= 200 && rect.bottom >= 200) {
-                        setActiveSection(section);
-                        break;
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollPosition = window.scrollY + 200; // Offset for detection
+
+                    // Optional: You could pre-calculate section offsets if content doesn't change dynamically
+                    // But for now, we'll keep it simple but throttled
+                    for (const section of uniqueSections) {
+                        const element = document.getElementById(section);
+                        if (element) {
+                            const { offsetTop, offsetHeight } = element;
+                            // Check if scroll position is within the section
+                            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                                setActiveSection(section);
+                                break;
+                            }
+                        }
                     }
-                }
+                    ticking = false;
+                });
+
+                ticking = true;
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -53,6 +65,7 @@ const Navigation = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="fixed top-6 left-0 right-0 mx-auto z-50 w-[90%] max-w-2xl"
+                style={{ transform: 'translateZ(0)' }} // Hardware acceleration to prevent jitter
             >
                 <div className="glass-panel rounded-full px-6 py-3 flex items-center justify-between relative z-50">
                     <a href="#" className="font-serif text-xl tracking-tight font-medium hover:text-gold transition-colors">MJ.</a>

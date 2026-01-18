@@ -43,8 +43,6 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
                     <div className="flex gap-8 text-sm text-dim uppercase tracking-widest">
                         <a href="https://www.linkedin.com/in/manikajoshi27" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-                        <a href="#" className="hover:text-white transition-colors">Instagram</a>
-                        <a href="#" className="hover:text-white transition-colors">Twitter</a>
                     </div>
 
                     <div className="text-dim text-xs opacity-50">

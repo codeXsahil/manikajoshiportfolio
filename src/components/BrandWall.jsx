@@ -2,7 +2,7 @@ import React from 'react';
 
 const brands = [
     "Pearson", "The Lalit", "Blinkit", "Mercedes-Benz", "Secret Temptation",
-    "Ava Hotels", "Kaya Spirits", "Bal Raksha Bharat", "ICRI", "Wahter", "Avatar Property"
+    "Ava Hotels", "Kaya Spirits", "Bal Raksha Bharat", "ICRI", "Ganga Realty"
 ];
 
 const BrandWall = () => {
