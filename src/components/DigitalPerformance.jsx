@@ -131,9 +131,9 @@ const DigitalPerformance = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl overflow-y-auto"
+                        className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl overflow-y-auto"
                     >
-                        <div className="min-h-screen p-8 md:p-12">
+                        <div className="min-h-screen p-8 md:p-12 pt-24 md:pt-12">
                             {/* Header */}
                             <div className="flex justify-between items-center mb-12 max-w-7xl mx-auto">
                                 <div>
@@ -183,7 +183,7 @@ const DigitalPerformance = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setLightboxSrc(null)}
-                        className="fixed inset-0 z-[80] flex items-center justify-center bg-black/98 p-4 backdrop-blur-xl"
+                        className="fixed inset-0 z-[110] flex items-center justify-center bg-black/98 p-4 backdrop-blur-xl"
                     >
                         <button
                             onClick={() => setLightboxSrc(null)}

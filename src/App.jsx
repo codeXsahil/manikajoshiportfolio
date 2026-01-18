@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import './index.css';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -18,11 +18,19 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 
 function App() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  /* OPTIMIZATION: Use MotionValues for mouse position to avoid re-rendering the entire App tree on every mouse move */
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 30, stiffness: 50 };
+  const mouseXSpring = useSpring(mouseX, springConfig);
+  const mouseYSpring = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const updateMouse = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      // Update MotionValues directly - triggers NO React re-renders
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     }
 
     window.addEventListener('mousemove', updateMouse);
@@ -30,7 +38,14 @@ function App() {
     return () => {
       window.removeEventListener('mousemove', updateMouse);
     };
-  }, []);
+  }, [mouseX, mouseY]);
+
+  // Transforms for the background blobs
+  const blob1X = useTransform(mouseXSpring, (x) => x * 0.05);
+  const blob1Y = useTransform(mouseYSpring, (y) => y * 0.05);
+
+  const blob2X = useTransform(mouseXSpring, (x) => x * -0.05);
+  const blob2Y = useTransform(mouseYSpring, (y) => y * -0.05);
 
   return (
     <div className="bg-black min-h-screen text-[#f0f0f0] selection:bg-[#C5A059] selection:text-black relative">
@@ -47,19 +62,19 @@ function App() {
         {/* Background Ambience */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <motion.div
-            animate={{
-              x: mousePosition.x * 0.05,
-              y: mousePosition.y * 0.05,
+            style={{
+              x: blob1X,
+              y: blob1Y,
             }}
-            transition={{ type: "spring", damping: 30, stiffness: 50 }}
+            // Remove animate prop as we use style
             className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-gold rounded-full mix-blend-screen opacity-[0.03] blur-[120px]"
           />
           <motion.div
-            animate={{
-              x: mousePosition.x * -0.05,
-              y: mousePosition.y * -0.05,
+            style={{
+              x: blob2X,
+              y: blob2Y,
             }}
-            transition={{ type: "spring", damping: 30, stiffness: 50 }}
+            // Remove animate prop as we use style
             className="absolute bottom-[-10%] right-[-10%] w-[35vw] h-[35vw] bg-white rounded-full mix-blend-screen opacity-[0.02] blur-[100px]"
           />
         </div>

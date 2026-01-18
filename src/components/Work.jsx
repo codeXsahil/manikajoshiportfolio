@@ -211,7 +211,13 @@ const Work = () => {
                         {projects.map((project) => (
                             <motion.div
                                 key={project.id}
-                                onViewportEnter={() => setActiveProject(project)}
+                                onViewportEnter={() => {
+                                    // Only update active project on desktop where the sticky preview is visible
+                                    // consistently prevents re-renders on mobile during scroll
+                                    if (window.innerWidth >= 1024) {
+                                        setActiveProject(project);
+                                    }
+                                }}
                                 viewport={{ margin: "-40% 0px -40% 0px" }}
                                 className="min-h-[50vh] flex flex-col justify-center"
                             >

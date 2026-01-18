@@ -9,7 +9,7 @@ const BrandWall = () => {
     return (
         <section className="py-20 overflow-hidden relative border-y border-white/5 bg-black/50 backdrop-blur-sm">
             <div className="flex w-full">
-                <div className="marquee-container flex-shrink-0 flex min-w-full items-center gap-16 animate-marquee whitespace-nowrap px-8">
+                <div className="marquee-container flex-shrink-0 flex min-w-full items-center gap-16 animate-marquee whitespace-nowrap px-8 will-change-transform">
                     {/* Double the list for seamless loop */}
                     {[...brands, ...brands].map((brand, index) => (
                         <span key={index} className="text-2xl md:text-3xl font-serif text-dim opacity-50 hover:opacity-100 transition-opacity cursor-default">
@@ -17,7 +17,7 @@ const BrandWall = () => {
                         </span>
                     ))}
                 </div>
-                <div className="marquee-container flex-shrink-0 flex min-w-full items-center gap-16 animate-marquee whitespace-nowrap px-8" aria-hidden="true">
+                <div className="marquee-container flex-shrink-0 flex min-w-full items-center gap-16 animate-marquee whitespace-nowrap px-8 will-change-transform" aria-hidden="true">
                     {[...brands, ...brands].map((brand, index) => (
                         <span key={index} className="text-2xl md:text-3xl font-serif text-dim opacity-50 hover:opacity-100 transition-opacity cursor-default">
                             {brand}
